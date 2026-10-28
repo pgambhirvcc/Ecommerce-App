@@ -33,8 +33,6 @@ function App() {
     getProductList();
   }, []);
 
-  console.log(productInfo);
-
   return (
     <ProductContext.Provider value={{
       productInfo,

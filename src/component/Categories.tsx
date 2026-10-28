@@ -5,27 +5,15 @@ import { Box, FormControlLabel, FormGroup, Typography } from '@mui/material';
 
 const Categories = () => {
 
-    const { productInfo , setProductInfo } = useContext(ProductContext);
+    const { productInfo, setProductInfo } = useContext(ProductContext);
     const { selectedCategories, categories } = productInfo;
 
-    const handleCategories = (category: string) => {
-
-        // If selected categories already present then remove it otherwise add it.
-        // const addedCategories = selectedCategories.includes(category) ? selectedCategories.splice() : [...selectedCategories, category];
-        let addedCategories = [];
-
-        if (selectedCategories.includes(category)) {
-            const index = selectedCategories.findIndex((cat ) => cat === category );
-            selectedCategories.splice(index, 1);
-            addedCategories = selectedCategories;
-        } else {
-            addedCategories = [...selectedCategories, category];
-        }
-        
-        setProductInfo({
-            ...productInfo,
-            selectedCategories: addedCategories
-        })
+    const handleCategoryChange = (category: string, checked: boolean) => {
+        setProductInfo((current) => ({
+            ...current,
+            selectedCategories: checked ? [...current.selectedCategories, category]
+            : current.selectedCategories.filter((item) => item !== category)
+        }))
     }
 
     return (
@@ -35,7 +23,13 @@ const Categories = () => {
                 {
                     categories?.map((category: string) => {
                         return (
-                            <FormControlLabel onChange={() => handleCategories(category)} control={<Checkbox />} label={category} />
+                            <FormControlLabel key={category} label={category} control={
+                                <Checkbox checked={selectedCategories.includes(category)} onChange={
+                                    (event) => {
+                                        handleCategoryChange(category, event.target.checked)
+                                    }
+                                } />
+                            } />
                         )
                     })
                 }
