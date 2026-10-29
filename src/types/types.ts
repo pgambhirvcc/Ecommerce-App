@@ -18,4 +18,6 @@ export type ProductInfo = {
     categories: string[];
     selectedCategories: string[];
     searchedQuery: string;
+    productsInCart: Product[];
+    favorites: Product[];
 }

@@ -22,6 +22,7 @@ const HomePage = () => {
   return (
     <Box>
 
+
     <TextField value={productInfo.searchedQuery} onChange={handleSearchChange} fullWidth label="Search" placeholder='Search for a product' variant="outlined" />
 
     <Box component='section' sx={{ display:'grid', gridTemplateColumns: '30% 70%', marginTop: '20px'}}>
