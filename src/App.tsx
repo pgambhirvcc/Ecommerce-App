@@ -12,7 +12,8 @@ function App() {
   const [productInfo, setProductInfo] = useState<ProductInfo>({
     productstList: [],
     categories: [],
-    selectedCategories: []
+    selectedCategories: [],
+    searchedQuery: ''
   });
 
   const getProductList = async () => {

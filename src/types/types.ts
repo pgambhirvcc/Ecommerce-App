@@ -17,4 +17,5 @@ export type ProductInfo = {
     productstList: Product[];
     categories: string[];
     selectedCategories: string[];
+    searchedQuery: string;
 }
